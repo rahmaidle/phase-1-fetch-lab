@@ -1,5 +1,18 @@
 function fetchBooks() {
   // To pass the tests, don't forget to return your fetch!
+  return fetch("https://anapioficeandfire.com/api/books")
+  .then(Response => {
+    if(!Response.ok){
+      throw new  Error('Network response was ok');
+    }
+    return Response.json()
+  })
+  .then(data => {
+    renderBooks(data);
+  })
+  .catch(error => {
+    console.error('Error fetching books:', error);
+  });
   
 }
 
